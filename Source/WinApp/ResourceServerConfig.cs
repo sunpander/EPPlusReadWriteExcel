@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PlugInCore.Common.XML
+namespace WinApp
 {
     #region 记录最近登录用户,密码
     /// <summary>
@@ -12,8 +12,6 @@ namespace PlugInCore.Common.XML
     /// </summary>
     public class ResourceServerConfig
     {
-
-
         public String fileName;
         public String sheetName;
         public String createPerson;
@@ -36,31 +34,18 @@ namespace PlugInCore.Common.XML
         /// </summary>
         /// <param name="localPath"></param>
         /// <returns></returns>
-        public static ResourceServerConfig LoadConfig()
+        public static ResourceServerConfig LoadConfig(String fileName)
         {
             try
             {
-                string strConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\iPlat4C_Config\\";
+                string strConfigPath = "template\\";// Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\iPlat4C_Config\\";
                 System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(strConfigPath);
-
-                string tmp = Environment.GetEnvironmentVariable("TEMP") + "\\iPlat4C_Config\\login.conf";
-                System.IO.FileInfo info2 = new System.IO.FileInfo(tmp);
-                string tmp2 = strConfigPath+"login.conf";
-              
+                string tmp2 = strConfigPath + fileName ;
                 if (!info.Exists)
                 {
                     info.Create();
-                 
                 }
-                if (info2.Exists)
-                {
-                    System.IO.FileInfo info3 = new System.IO.FileInfo(tmp2);
-                    if (!info3.Exists)
-                    {
-                        info2.MoveTo(tmp2);
-                    }
-                }
-                object obj = XMLConfigUtility.LoadConfigByType(typeof(ResourceServerConfig),"login.conf", strConfigPath);
+                object obj = XMLConfigUtility.LoadConfigByType(typeof(ResourceServerConfig), fileName, strConfigPath);
                 ResourceServerConfig config = null;
                 if (obj is ResourceServerConfig)
                 {
@@ -69,28 +54,28 @@ namespace PlugInCore.Common.XML
                 if (config != null)
                     return config;
                 else
-                    return new ResourceServerConfig();
+                    return null;
             }
             catch
             {
-                return new ResourceServerConfig();
+                return null;
             }
         }
         /// <summary>
         /// 保存配置
         /// </summary>
         /// <returns></returns>
-        public bool SaveConfig()
+        public bool SaveConfig(String fileName)
         {
             try
             {
-                string strConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\iPlat4C_Config\\";
+                string strConfigPath = "template\\";     // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\iPlat4C_Config\\";
                 System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(strConfigPath);
                 if (!info.Exists)
                 {
                     info.Create();
                 }
-                return XMLConfigUtility.SaveNewConfig(this, "login.conf", strConfigPath);
+                return XMLConfigUtility.SaveNewConfig(this, fileName, strConfigPath);
             }
             catch (Exception ex)
             {

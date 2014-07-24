@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using EPPlusSamples;
-using PlugInCore.Common.XML;
 using OfficeOpenXml;
 namespace WinApp
 {
@@ -59,12 +58,12 @@ namespace WinApp
             config.listDataColEname.Add("NAME");
             config.listDataColEname.Add("AGE");
 
-            config.SaveConfig();
+            config.SaveConfig("test.conf");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ResourceServerConfig config = ResourceServerConfig.LoadConfig();
+            ResourceServerConfig config = ResourceServerConfig.LoadConfig("test.conf");
             String dd = config.sheetName;
         }
 
@@ -115,7 +114,7 @@ namespace WinApp
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ResourceServerConfig config = ResourceServerConfig.LoadConfig();
+            ResourceServerConfig config = ResourceServerConfig.LoadConfig("test.conf");
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("name");

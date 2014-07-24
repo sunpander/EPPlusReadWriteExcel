@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace PlugInCore.Common
+namespace WinApp
 {
     /// <summary>
     /// 通用配置信息类
