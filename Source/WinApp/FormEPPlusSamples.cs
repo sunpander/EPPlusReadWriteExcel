@@ -18,7 +18,7 @@ namespace WinApp
             InitializeComponent();
 
             // change this line to contain the path to the output folder
-             outputDir = new DirectoryInfo(@"c:\temp\SampleApp");
+            outputDir = new DirectoryInfo(@"c:\temp\SampleApp");
 
             if (!outputDir.Exists)
             {
@@ -70,12 +70,12 @@ namespace WinApp
 
         public static string RunSample5(DirectoryInfo outputDir, DataTable dtContent, ResourceServerConfig config)
         {
-            FileInfo templateFile = new FileInfo(outputDir.FullName + @"\化学分析.xlsx");
-            FileInfo newFile = new FileInfo(outputDir.FullName + @"\化学分析2.xlsx");
+            FileInfo templateFile = new FileInfo(outputDir.FullName + @"\a.xlsx");
+            FileInfo newFile = new FileInfo(outputDir.FullName + @"\a2.xlsx");
             if (newFile.Exists)
             {
                 newFile.Delete();  // ensures we create a new workbook
-                newFile = new FileInfo(outputDir.FullName + @"\化学分析2.xlsx");
+                newFile = new FileInfo(outputDir.FullName + @"\a2.xlsx");
             }
             using (ExcelPackage package = new ExcelPackage(newFile, templateFile))
             {
@@ -94,7 +94,7 @@ namespace WinApp
                         object obj = dtContent.Rows[i][listColIndex[k]];
                         if ("rec_date" == listColIndex[k])
                         {
-                            worksheet.Cells[x + i, y + k].Value = DateTime.Parse(obj.ToString()).ToString( );
+                            worksheet.Cells[x + i, y + k].Value = DateTime.Parse(obj.ToString()).ToString();
                         }
                         else
                         {
@@ -104,7 +104,7 @@ namespace WinApp
                     }
                     totalX = x + i;
                 }
-                
+
                 // save our new workbook and we are done!
                 package.Save();
             }
@@ -124,8 +124,44 @@ namespace WinApp
             {
                 dt.Rows.Add(i, "name:" + i, i, "class:" + i);
             }
-            RunSample5(outputDir, dt,config);
+            RunSample5(outputDir, dt, config);
 
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FileInfo templateFile = new FileInfo(outputDir.FullName + @"\b.xlsx");
+            FileInfo newFile = new FileInfo(outputDir.FullName + @"\b2.xlsx");
+            if (newFile.Exists)
+            {
+                newFile.Delete();  // ensures we create a new workbook
+                newFile = new FileInfo(outputDir.FullName + @"\b2.xlsx");
+            }
+            using (ExcelPackage package = new ExcelPackage(newFile, templateFile))
+            {
+                //Open worksheet 1
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+
+
+                ExcelRange range = worksheet.Cells["A1:Q3"];
+                if (range.Merge)
+                {
+                    // range.
+                }
+                for (int i = 0; i < 5; i++)
+                {
+
+                }
+                // save our new workbook and we are done!
+                package.Save();
+            }
+
+
+        }
+
+        private void FormEPPlusSamples_Load(object sender, EventArgs e)
+        {
 
         }
     }

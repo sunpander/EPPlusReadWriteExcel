@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<appSettings>
+
+  <!--调试功能相关配置开始-->
+  <add key="DebugMode" value="false" />
+
+  <add key="UserID" value="dingmoumou" />
+  <add key="UserName" value="丁某某" />
+  <add key="DeptID" value="WGQDept1" />
+  <add key="DeptName" value="外高桥项目组" />
+  <add key="OneLevelDeptID" value="研发中心" />
+  <add key="OneLevelDeptName" value="研发中心" />
+  <add key="Roles" value="admin,班长" />
+  <add key="PowerCode" value="WJDC"/>
+  <add key="PowerName" value="吴泾电厂"/>
+  <!--调试功能相关配置结束-->
+
+  <add key="connectionaccess" value="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\aaaa.mdb;Jet OLEDB:Database Password=;"/>
+  <add key="ChartImageHandler" value="storage=file;timeout=20;dir=c:\TempImageFiles\;"/>
+
+  <!--数据库连接配置开始-->
+  <!--<add key="ConnectString" value="Data Source=EDWARD;Initial Catalog=TDataQISTest;Integrated Security=True"/>-->
+  <!--<add key="ConnectString" value="Data Source=.;Initial Catalog=TDataQISTest;Persist Security Info=True;User ID=sa;Password=sqladmin" />-->
+  <!--<add key="ConnectString" value="Data Source=10.25.69.32;Initial Catalog=TDataQISTest;Persist Security Info=True;User ID=sa;Password=sa"/>-->
+  <!--数据库连接配置结束-->
+  <add key="ConnectString" value="Data Source=192.168.200.201;Initial Catalog=TDataQISTest_2;Persist Security Info=True;User ID=sa;Password=sxhb2552"/>
+  
+</appSettings>

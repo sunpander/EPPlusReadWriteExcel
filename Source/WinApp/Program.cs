@@ -13,6 +13,8 @@ namespace WinApp
         [STAThread]
         static void Main()
         {
+            List<String> list3 = new List<string> { "a", "b" };
+           // ExportUtil.ReadTitle("");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLoadConfig());
